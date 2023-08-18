@@ -8,12 +8,22 @@ function getNumberFromInput(inputFieldName) {
   }
 }
 
+var tf = true;
 function setInnerText(fieldName, val) {
   if (isNaN(val)) {
     return;
   } else {
     document.getElementById(fieldName).innerText = val.toFixed(2);
   }
+}
+function convert(btnid) {
+  let intexid = "aaa" + btnid;
+  let meter = parseFloat(document.getElementById(intexid).innerText) / 10000;
+  let cm = parseFloat(document.getElementById(intexid).innerText) * 10000;
+  let ht = "hisTxta" + btnid;
+  document.getElementById(ht).innerHTML = `${meter}m<sup>2</sup>`;
+  //   document.getElementById(btnid).innerHTML = `To cm<sup>2</sup>`;
+  document.getElementById(btnid).innerHTML = ``;
 }
 
 function setHistory(name, val) {
@@ -25,8 +35,8 @@ function setHistory(name, val) {
   document.getElementById("his").innerHTML += `
   <div class="flex items-center justify-between p-4 gap-3">
     <h3 class="font-bold">${c}. ${name}</h3>
-    <h3 id="hisTxt${c}" class="font-bold">${val}cm<sup>2</sup></h3>
-    <button id="hisBtn${c}" class="p-2 text-white  bg-blue-600 hover:bg-blue-950 rounded-lg font-bold">To m<sup>2</sup></button>
+    <h3 id="hisTxtaa${c}" class="font-bold"><span id="aaaa${c}">${val}</span>cm<sup>2</sup></h3>
+    <button id="a${c}" class="p-2 text-white  bg-blue-600 hover:bg-blue-950 rounded-lg font-bold" onclick="convert(this.id)">To m<sup>2</sup></button>
   </div> `;
 }
 // triangle
